@@ -1949,19 +1949,19 @@
 		-one=		\pgfplotscoordmath{\pgfplotscoordmathid}{parsenumber}{-1},
 		log e=		\pgfmathlog@{##1},%
 		log to display log=\pgfmath@basic@multiply@{##1}{2.3025851},% * log(10)
-		log from display log=\pgfmath@basic@multiply@{##1}{0.434294},% / log(10)
+		log from display log=\pgfmath@basic@multiply@{##1}{0.43429448},% / log(10)
 		log unsigned int={%
 			\edef\pgfmathresult{%
 				\ifcase##1
 				\or0
-				\or0.693147
-				\or1.098612
-				\or1.386294
+				\or0.69314718
+				\or1.09861229
+				\or1.38629436
 				\or1.60943791
-				\or1.7917594
+				\or1.79175947
 				\or1.94591014
 				\or2.07944154
-				\or2.197224
+				\or2.19722458
 				\fi
 			}%
 		},
