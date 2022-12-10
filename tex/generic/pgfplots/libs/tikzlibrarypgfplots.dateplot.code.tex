@@ -169,6 +169,16 @@
 		\pgfkeysdef{/pgfplots/#1 coord trafo}{%
 			\begingroup
 			\edef\pgfplotstempjuliandate{##1}%
+			% convert float to julian date
+			\expandafter\pgfutil@in@\expandafter Y\expandafter{\pgfplotstempjuliandate}%
+			\ifpgfutil@in@
+			\pgfmathfloattofixed{\pgfplotstempjuliandate}%
+				% quick \pgfmathfloatround@
+				\pgfkeysvalueof{/pgf/number format/precision/.@cmd}0\pgfeov
+				\pgfmathroundto{\pgfmathresult}%
+				\pgfcalendarjuliantodate{\pgfmathresult}{\year}{\month}{\day}%
+				\edef\pgfplotstempjuliandate{\year-\month-\day}%
+			\fi
 			% check if we also have a TIME like '2006-01-01 11:21'
 			\expandafter\pgfutil@in@\expandafter:\expandafter{\pgfplotstempjuliandate}%
 			\ifpgfutil@in@
